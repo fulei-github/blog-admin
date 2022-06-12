@@ -1,0 +1,74 @@
+{
+ "menuList":[
+   {
+    "id": "0",
+    "icon": "el-icon-user-solid",
+    "name": "欢迎您访问",
+    "children": [
+      {
+        "id": "0-0",
+        "name": "首页",
+        "to": "/index"
+      }
+    ]
+   },
+   {
+    "id": "1",
+    "icon": "el-icon-user-solid",
+    "name": "权限管理",
+    "children": [
+      {
+        "id": "1-0",
+        "name": "权限分配",
+        "to": ""
+      }
+    ]
+   },
+   {
+    "id": "2",
+    "icon": "el-icon-menu",
+    "name": "技术分享管理",
+    "children": [
+      {
+        "id": "2-0",
+        "name": "分类管理",
+        "to": ""
+      },
+      {
+        "id": "2-1",
+        "name": "文章管理",
+        "to": ""
+      }
+    ]
+   },
+   {
+    "id": "3",
+    "icon": "el-icon-s-platform",
+    "name": "书籍分享管理",
+    "children": [
+      {
+        "id": "3-0",
+        "name": "分类管理",
+        "to": ""
+      },
+      {
+        "id": "3-1",
+        "name": "文章管理",
+        "to": ""
+      }
+    ]
+   },
+   {
+    "id": "4",
+    "icon": "el-icon-s-platform",
+    "name": "建议信箱管理",
+    "children": [
+      {
+        "id": "4-0",
+        "name": "数据管理",
+        "to": ""
+      }
+    ]
+   }
+ ]
+}

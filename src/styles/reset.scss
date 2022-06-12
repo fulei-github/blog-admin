@@ -1,0 +1,8 @@
+//重写element-ui的样式
+
+@import "./variables.scss";
+
+::v-deep .el-button--primary{
+  background-color:$main_color;
+  border-color:$main_color;
+}

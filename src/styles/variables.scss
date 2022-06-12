@@ -1,0 +1,30 @@
+// 主色
+$main_color: #5A9CF8 ; // 主题色
+$layout_width: 1200px; // layout布局
+
+// 场景 辅色
+$success_color: #67c23a; // 常规绿 成功色
+$light_success_color: #eff8eb; // 浅绿 用于成功等正确性提示配色（次要）
+
+$warn_color: #e6a23a; // 常规橙 警告色
+$light_warn_color: #fcf5eb; // 浅橙 用于文字背景色（次要）
+
+$danger_color: #f56c6c; // 常规红 危险色
+$light_danger_color: #fef0f0; // 浅红 用于警告或者错误提示（次要）
+
+// 文本 颜色
+$main_text_color: #303133; // 用于标题、正文等
+$second_text_color: #606266; // 次级文本
+$third_text_color: #909399; // 辅助文本
+$fourth_text_color: #c0c4cc; // 禁用文本 / 字体图标颜色
+
+// 边框 
+$border_color: #b6b7b9; //默认边框
+$second_border_color: #cecece; // 用于默认边框颜色、分割线等
+$third_border_color: #e4e7ed; // 用于标题下划线等
+$fourth_border_color: #f2f6f7; // 用于辅助边框等
+
+// 背景色
+$main_bg_color: #f5f7fa; // 用于默认背景色、下拉鼠标悬停背景、禁用状态背景等
+$second_bg_color: #f0f2f5; // 用于辅助背景色等
+$third_bg_color: #fff; // 白色
