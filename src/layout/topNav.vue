@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-12 22:19:23
+ * @LastEditTime: 2022-06-12 22:30:53
 -->
 <template>
   <el-card shadow="hover" style="margin-bottom:14px" class="postive">
@@ -13,19 +13,23 @@
         <h2>博客后台管理系统</h2>
       </div>
       <div class="wrapper">
-        <el-avatar :size="50" src="../assets/logo.png"></el-avatar>
+        <el-avatar :size="50" :src="src"></el-avatar>
         <!-- <div>
           <img src="../assets/logo.png" alt="">
         </div> -->
         <div class="dropdown_box">
           <el-dropdown>
             <span class="el-dropdown-link">
-              下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
+              admin<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>黄金糕</el-dropdown-item>
-              <el-dropdown-item>狮子头</el-dropdown-item>
-              <el-dropdown-item>螺蛳粉</el-dropdown-item>
+              <router-link to="/">
+                <el-dropdown-item>首页</el-dropdown-item>
+              </router-link>
+              <a target="_blank" href="https://github.com/fulei-github/blog-admin">
+                <el-dropdown-item>项目地址</el-dropdown-item>
+              </a>
+              <el-dropdown-item divided @click="handleClick(2)">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -39,7 +43,7 @@ export default {
 
   data() {
     return {
-
+      src: require("../assets/logo.png")
     }
   },
 
@@ -48,7 +52,12 @@ export default {
   },
 
   methods: {
+    handleClick(key) {
+      console.log(key)
 
+      this.$router.push("/login")
+
+    }
   }
 }
 </script>
