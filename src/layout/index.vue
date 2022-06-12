@@ -1,14 +1,24 @@
+<!--
+ * @Description: layout布局
+ * @Date: 2022-06-12 21:14:33
+ * @Version: 0.1
+ * @Autor: fulei
+ * @LastEditors: fulei
+ * @LastEditTime: 2022-06-12 22:20:25
+-->
  <template>
   <div class="container">
     <!-- 左侧菜单 -->
     <div class="container-menu">
-      <el-card shadow="hover">
+      <el-card shadow="hover" style="height:100%">
         <f-menu />
       </el-card>
     </div>
     <!-- 页面主体 -->
+
     <div class="container-content">
-      <el-card shadow="hover">
+      <top-nav />
+      <el-card shadow="hover" class="container-wrapper">
         <router-view />
       </el-card>
     </div>
@@ -16,7 +26,11 @@
 </template>
  
  <script>
+import topNav from "./topNav.vue"
 export default {
+  components: {
+    topNav
+  },
   name: "layout",
   data() {
     return {
@@ -49,20 +63,21 @@ export default {
   background-color: #f6f6f8;
   display: flex;
   ::v-deep .el-card {
-    height: 100%;
+    // height: 100%;
     border-radius: 10px;
   }
   .container-menu {
     width: 300px;
     min-height: 900px;
-    margin: 30px;
+    margin: 10px;
   }
   .container-content {
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    margin: 10px;
     flex: 1;
-    margin: 30px;
-    margin-left: 0;
+    .container-wrapper {
+      // margin-top: 100px;
+    }
   }
 }
 </style>
