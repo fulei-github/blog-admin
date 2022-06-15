@@ -4,7 +4,7 @@
  * @Autor: fulei
  * @Date: 2022-05-12 11:26:58
  * @LastEditors: fulei
- * @LastEditTime: 2022-05-12 17:24:26
+ * @LastEditTime: 2022-06-15 21:17:26
  */
 const path = require("path")
 
@@ -58,5 +58,21 @@ module.exports = {
       .set("@api", resolve("src/api"))
       .set("@components", resolve("src/components"))
       .set("@pic", resolve("src/assets/imgs"))
+    // svg配置
+    config.module
+      .rule("svg")
+      .uses.clear()
+    config.module
+      .rule("svg1")
+      .test(/.svg$/)
+      .use("svg-sprite")
+      .loader("svg-sprite-loader")
+      .options({
+        symbolId: "icon-[name]"
+      })
+      .end()
+      .include
+      .add(path.join(__dirname, "src/icons"))
+      .end()
   }
 }
