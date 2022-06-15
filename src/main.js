@@ -4,7 +4,7 @@
  * @Autor: fulei
  * @Date: 2022-05-12 11:26:58
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-12 21:20:35
+ * @LastEditTime: 2022-06-15 22:29:47
  */
 import Vue from "vue"
 import App from "./App.vue"
@@ -16,7 +16,7 @@ import "@/styles/index.scss" // 引入基础样式
 import "element-ui/lib/theme-chalk/index.css"
 import Mixin from "@/mixins/index.js"
 import afterEachHandler from "@/router/after-each"
-
+import { beforeEachHandler } from "@/router/befor-each"
 Vue.mixin(Mixin)
 // 兼容IE
 if (Number.parseInt === undefined) {
@@ -25,6 +25,7 @@ if (Number.parseInt === undefined) {
 if (Number.parseFloat === undefined) {
   Number.parseFloat = window.parseFloat
 }
+router.beforeEach(beforeEachHandler)
 //标题设置
 router.afterEach(afterEachHandler)
 Vue.config.productionTip = false
