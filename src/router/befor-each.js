@@ -4,9 +4,10 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-15 22:33:55
+ * @LastEditTime: 2022-06-15 22:42:16
  */
 // import router from "@/router" // 引入路由实例
+import { getToken } from "@/utils/auth"
 const whiteList = ["/login", "/404"] // 定义白名单  所有不受权限控制的页面
 
 function beforeEachHandler(to, from, next) {
@@ -19,8 +20,15 @@ function beforeEachHandler(to, from, next) {
     //在白名单--放行
     next()
   } else {
-    //不在白名单--跳登录
-    next("/login")
+    //不在白名单--判断有无token
+    const token = getToken()
+    if (token !== "") {
+      //有token
+      next()
+    } else {
+      //无token
+      next("/login")
+    }
   }
 }
 export { beforeEachHandler }
