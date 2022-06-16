@@ -4,14 +4,14 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-12 22:20:25
+ * @LastEditTime: 2022-06-16 12:00:34
 -->
  <template>
   <div class="container">
     <!-- 左侧菜单 -->
     <div class="container-menu">
       <el-card shadow="hover" style="height:100%">
-        <f-menu />
+        <f-menu :theChoosen='$route.meta.menuItem' />
       </el-card>
     </div>
     <!-- 页面主体 -->
@@ -42,6 +42,7 @@ export default {
       handler(to) {
         // console.log("to", to)
         this.route = to
+
       },
       deep: true,
       immediate: true

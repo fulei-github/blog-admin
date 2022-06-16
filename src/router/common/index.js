@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: cjz
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-13 11:10:48
+ * @LastEditTime: 2022-06-16 11:57:28
  */
 
 import Layout from "@/layout/index.vue"
@@ -18,7 +18,8 @@ export default [
       {
         path: "/index",
         meta: {
-          title: "欢迎您"
+          title: "欢迎您",
+          menuItem: "/index"
         },
         component: () =>
           import(/* webpackChunkName: "publicModule" */ "@/views/Home.vue")

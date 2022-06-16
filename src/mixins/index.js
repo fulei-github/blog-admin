@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-16 11:10:40
+ * @LastEditTime: 2022-06-16 11:46:54
  */
 import { formatLabelByLocalCode } from "@/utils/dictionary"
 import { validateUserNameFn, validatePassWordFn } from "@/utils/check"

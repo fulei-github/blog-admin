@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-15 22:42:16
+ * @LastEditTime: 2022-06-16 11:49:29
  */
 // import router from "@/router" // 引入路由实例
 import { getToken } from "@/utils/auth"
@@ -22,7 +22,8 @@ function beforeEachHandler(to, from, next) {
   } else {
     //不在白名单--判断有无token
     const token = getToken()
-    if (token !== "") {
+    console.log("有无token", token)
+    if (token !== null) {
       //有token
       next()
     } else {

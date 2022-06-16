@@ -4,7 +4,7 @@
  * @Autor: fulei
  * @Date: 2022-05-12 11:26:58
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-15 22:29:47
+ * @LastEditTime: 2022-06-16 11:47:03
  */
 import Vue from "vue"
 import App from "./App.vue"
@@ -17,6 +17,8 @@ import "element-ui/lib/theme-chalk/index.css"
 import Mixin from "@/mixins/index.js"
 import afterEachHandler from "@/router/after-each"
 import { beforeEachHandler } from "@/router/befor-each"
+import SessionUtil from "@/utils/session-storage"
+Vue.prototype.$sessionUtil = SessionUtil
 Vue.mixin(Mixin)
 // 兼容IE
 if (Number.parseInt === undefined) {

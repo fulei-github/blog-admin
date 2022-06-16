@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-16 11:33:29
+ * @LastEditTime: 2022-06-16 11:48:00
 -->
 <template>
   <div class="login-box">
@@ -117,7 +117,12 @@ export default {
         username: this.form.username,
         password: this.form.password
       }
-      console.log("登录的入参", params)
+      //模拟登录
+      this.$sessionUtil.setItem("token", "70e49704-343b-4c3c-852b-83e27f18aae4")
+      this.$sessionUtil.setItem("user", params)
+      setTimeout(() => {
+        this.$router.push("/")
+      }, 500)
     },
     //注册的api
     handleReg() {
