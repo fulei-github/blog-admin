@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-15 22:24:08
+ * @LastEditTime: 2022-06-16 11:33:29
 -->
 <template>
   <div class="login-box">
@@ -15,41 +15,76 @@
       </div>
       <div class="right">
         <h4>欢迎{{isLogin ? "登录" : "注册"}}</h4>
-        <el-form ref="form" :model="form" class="login-form-box">
-          <el-form-item>
-            <el-input v-model.trim="form.username" placeholder="请输入账号">
-              <i slot="prefix" class="el-input__icon el-icon-user-solid"></i>
-            </el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-input v-model.trim="form.password" placeholder="请输入密码">
-              <i slot="prefix" class="el-input__icon el-icon-s-goods"></i>
-            </el-input>
-          </el-form-item>
-          <el-form-item v-if="!isLogin">
-            <el-input v-model.trim="form.password2" placeholder="请再次输入密码">
-              <i slot="prefix" class="el-input__icon el-icon-s-goods"></i>
-            </el-input>
-          </el-form-item>
+        <el-form ref="form" :model="form" :rules="rules" class="login-form-box">
+          <!-- 登录模块 -->
+          <template v-if="isLogin">
+            <el-form-item prop="username">
+              <el-input v-model.trim="form.username" placeholder="请输入账号">
+                <i slot="prefix" class="el-input__icon el-icon-user-solid"></i>
+              </el-input>
+            </el-form-item>
+            <el-form-item prop="password">
+              <el-input v-model.trim="form.password" placeholder="请输入密码" show-password @keyup.enter.native="handleSubmit('0')">
+                <i slot="prefix" class="el-input__icon el-icon-s-goods"></i>
+              </el-input>
+            </el-form-item>
+          </template>
+          <!-- 注册模块 -->
+          <template v-else>
+            <el-form-item prop="username1">
+              <el-input v-model.trim="form.username1" placeholder="请输入账号">
+                <i slot="prefix" class="el-input__icon el-icon-user-solid"></i>
+              </el-input>
+            </el-form-item>
+            <el-form-item prop="password1">
+              <el-input v-model.trim="form.password1" placeholder="请输入密码" show-password>
+                <i slot="prefix" class="el-input__icon el-icon-s-goods"></i>
+              </el-input>
+            </el-form-item>
+            <el-form-item prop="password2">
+              <el-input v-model.trim="form.password2" placeholder="请再次输入密码" @keyup.enter.native="handleSubmit('1')" show-password>
+                <i slot="prefix" class="el-input__icon el-icon-s-goods"></i>
+              </el-input>
+            </el-form-item>
+          </template>
         </el-form>
-        <el-button v-if="isLogin" type="primary" @click="handleSubmit('0')">登录</el-button>
+        <el-button v-if="isLogin" type="primary" @click.native.prevent="handleSubmit('0')">登录</el-button>
         <el-button v-else type="primary" @click="handleSubmit('1')">注册</el-button>
         <div class="t-a-c" style="width:100%">
           <el-link v-if="isLogin" type="info" @click="handleClick">没有账号？点此去注册</el-link>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
+    const validatePassword2 = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请再次输入密码"))
+      } else if (value !== this.form.password1) {
+        callback(new Error("两次输入密码不一致!"))
+      } else {
+        callback()
+      }
+    }
     return {
       form: {
         username: "",
-        password: ""
+        password: "",
+        username1: "",
+        password1: "",
+        password2: ""
+      },
+      rules: {
+        username: [{ required: true, message: "请输入账号", trigger: "blur" }],
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+        username1: [{ required: true, validator: this.validateUserNameFn, trigger: "blur" }],
+        password1: [{ required: true, validator: this.validatePassWordFn, trigger: "blur" }],
+        password2: [{ required: true, validator: validatePassword2, trigger: "blur" }]
       },
       title: "欢迎登录",
       isLogin: true
@@ -61,17 +96,40 @@ export default {
   },
 
   methods: {
-    handleSubmit(key) {
-      switch (key) {
-        case "0":
-          this.$message.success("surprise")
-          break
-        case "1":
-          this.isLogin = !this.isLogin
-          break
+    async handleSubmit(key) {
+      await this.$refs.form.validate()
+      try {
+        switch (key) {
+          case "0":
+            this.handleLogin()
+            break
+          case "1":
+            this.handleReg()
+            break
+        }
+      } catch (error) {
+        console.dir(error)
       }
     },
+    //登录的api
+    handleLogin() {
+      const params = {
+        username: this.form.username,
+        password: this.form.password
+      }
+      console.log("登录的入参", params)
+    },
+    //注册的api
+    handleReg() {
+      const params = {
+        username: this.form.username1,
+        password: this.form.password1
+      }
+      console.log("注册的入参", params)
+      this.isLogin = !this.isLogin
+    },
     handleClick() {
+      this.form = {}
       this.isLogin = !this.isLogin
     },
     onSubmit() {

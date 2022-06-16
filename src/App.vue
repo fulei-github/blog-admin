@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-15 22:40:35
+ * @LastEditTime: 2022-06-16 10:54:18
 -->
 <template>
   <div id="app">
@@ -14,10 +14,10 @@
 <script>
 export default {
   created() {
-    sessionStorage.setItem(
-      "token",
-      "70e49704-343b-4c3c-852b-83e27f18aae4"
-    )
+    // sessionStorage.setItem(
+    //   "token",
+    //   "70e49704-343b-4c3c-852b-83e27f18aae4"
+    // )
   }
 }
 </script>
