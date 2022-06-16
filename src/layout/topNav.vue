@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-12 22:30:53
+ * @LastEditTime: 2022-06-16 12:09:48
 -->
 <template>
   <el-card shadow="hover" style="margin-bottom:14px" class="postive">
@@ -29,7 +29,7 @@
               <a target="_blank" href="https://github.com/fulei-github/blog-admin">
                 <el-dropdown-item>项目地址</el-dropdown-item>
               </a>
-              <el-dropdown-item divided @click="handleClick(2)">退出登录</el-dropdown-item>
+              <el-dropdown-item divided @click.native="handleClick(2)">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -52,10 +52,16 @@ export default {
   },
 
   methods: {
-    handleClick(key) {
-      console.log(key)
+    async handleClick(key) {
+      try {
+        await this.$confirm("亲,确定退出吗?", "提示")
+        this.$sessionUtil.clear()
+        this.$router.replace("/login")
+      } catch (error) {
+        console.log("点击取消按钮")
+      }
 
-      this.$router.push("/login")
+      // this.$router.push("/login")
 
     }
   }
