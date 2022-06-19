@@ -4,38 +4,38 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-16 12:09:48
+ * @LastEditTime: 2022-06-19 13:45:07
 -->
 <template>
-  <el-card shadow="hover" style="margin-bottom:14px" class="postive">
-    <div class="top_nav">
-      <div>
-        <h2>博客后台管理系统</h2>
-      </div>
-      <div class="wrapper">
-        <el-avatar :size="50" :src="src"></el-avatar>
-        <!-- <div>
+
+  <div class="top_nav">
+    <div>
+      <h4>博客后台管理系统</h4>
+    </div>
+    <div class="wrapper">
+      <el-avatar :size="50" :src="src"></el-avatar>
+      <!-- <div>
           <img src="../assets/logo.png" alt="">
         </div> -->
-        <div class="dropdown_box">
-          <el-dropdown>
-            <span class="el-dropdown-link">
-              admin<i class="el-icon-arrow-down el-icon--right"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <router-link to="/">
-                <el-dropdown-item>首页</el-dropdown-item>
-              </router-link>
-              <a target="_blank" href="https://github.com/fulei-github/blog-admin">
-                <el-dropdown-item>项目地址</el-dropdown-item>
-              </a>
-              <el-dropdown-item divided @click.native="handleClick(2)">退出登录</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </div>
+      <div class="dropdown_box">
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            admin<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <router-link to="/">
+              <el-dropdown-item>首页</el-dropdown-item>
+            </router-link>
+            <a target="_blank" href="https://github.com/fulei-github/blog-admin">
+              <el-dropdown-item>项目地址</el-dropdown-item>
+            </a>
+            <el-dropdown-item divided @click.native="handleClick(2)">退出登录</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
     </div>
-  </el-card>
+  </div>
+
 </template>
 
 <script>
@@ -73,28 +73,33 @@ export default {
 ::v-deep .el-card__body {
   padding: 0;
 }
-.postive {
-  // position: fixed;
-  // top: 10px;
-  // width: 82%;
-  // z-index: 1000;
+::v-deep .el-dropdown-link {
+  color: #fff;
 }
 .top_nav {
-  // margin-bottom: 20px;
-  padding: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: #fff;
-  border-radius: 10px;
+  height: 70px;
   display: flex;
   align-items: center;
+  line-height: 70px;
   justify-content: space-between;
-  h2 {
+  background-image: url("../assets/imgs/index/bg@2x.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: 9999;
+  h4 {
     margin: 0;
+    margin-left: 40px;
+    color: #fff;
   }
   .wrapper {
+    margin-right: 40px;
     display: flex;
     align-items: center;
     .dropdown_box {
-      // width: ;
       margin-left: 14px;
     }
   }

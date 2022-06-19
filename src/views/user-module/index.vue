@@ -1,14 +1,14 @@
 <!--
- * @Description: 首页
- * @Date: 2022-06-12 21:14:33
+ * @Description: 账号设置
+ * @Date: 2022-06-16 12:40:43
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-16 12:28:59
+ * @LastEditTime: 2022-06-16 12:40:51
 -->
 <template>
-  <div class="home_box">
-
+  <div>
+    账号设置
   </div>
 </template>
 
@@ -21,16 +21,15 @@ export default {
     }
   },
 
-  created() {
+  mounted() {
 
   },
+
   methods: {
 
   }
 }
 </script>
+
 <style lang="scss" scoped>
-.home_box {
-  min-height: 800px;
-}
 </style>

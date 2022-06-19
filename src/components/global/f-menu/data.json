@@ -1,16 +1,16 @@
 {
- "menuList":[
-   {
-    "id": "0",
-    "icon": "el-icon-user-solid",
-    "name": "欢迎您",
-    "children": [
-      {
-        "id": "0-0",
-        "name": "首页",
-        "to": "/index"
-      }
-    ]
-   }
- ]
-}
+  "menuList":[
+    {
+     "id": "0",
+     "icon": "el-icon-user-solid",
+     "name": "首页",
+     "to": "/index"
+    },
+    {
+     "id": "1",
+     "icon": "el-icon-user-solid",
+     "name": "用户中心",
+     "to": "/user-info"
+    }
+  ]
+ }
