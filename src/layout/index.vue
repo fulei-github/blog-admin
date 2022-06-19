@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-19 14:22:24
+ * @LastEditTime: 2022-06-19 14:35:02
 -->
  <template>
   <div class="container">
@@ -18,7 +18,13 @@
     </div>
     <div class="container-content" :style="layoutStyle">
       <div class="layout-box">
-        layout-box
+        <transition name="fade">
+          <template>
+            <keep-alive>
+              <router-view />
+            </keep-alive>
+          </template>
+        </transition>
       </div>
     </div>
   </div>
@@ -104,6 +110,8 @@ export default {
     height: 100vh;
     // margin-left: 210px;
     .layout-box {
+      height: 100vh;
+      padding: 20px;
     }
   }
 }

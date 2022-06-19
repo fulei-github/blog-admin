@@ -4,7 +4,7 @@
  * @Autor: fulei
  * @Date: 2022-05-12 11:26:58
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-16 11:47:03
+ * @LastEditTime: 2022-06-19 15:07:26
  */
 import Vue from "vue"
 import App from "./App.vue"
@@ -18,6 +18,9 @@ import Mixin from "@/mixins/index.js"
 import afterEachHandler from "@/router/after-each"
 import { beforeEachHandler } from "@/router/befor-each"
 import SessionUtil from "@/utils/session-storage"
+// 引入 echarts
+import * as echarts from "echarts"
+Vue.prototype.$echarts = echarts
 Vue.prototype.$sessionUtil = SessionUtil
 Vue.mixin(Mixin)
 // 兼容IE
