@@ -4,14 +4,14 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-19 14:07:41
+ * @LastEditTime: 2022-06-19 14:22:24
 -->
  <template>
   <div class="container">
     <top-nav />
     <div class="menu-box" :style="menuStyle">
       <div class="imgs">
-        <img v-if="show" :src="require('@pic/index/shrink@2x.png')" alt="shrink" @click="controlMenu">
+        <img v-if="!show" :src="require('@pic/index/shrink@2x.png')" alt="shrink" @click="controlMenu">
         <img v-else :src="require('@pic/index/open@2x.png')" alt="open" @click="controlMenu">
       </div>
       <f-menu :theChoosen='$route.meta.menuItem' :showIcon="show" />
@@ -34,28 +34,18 @@ export default {
   data() {
     return {
       route: null,
-      show: true //控制侧边栏
+      show: false //控制侧边栏
     }
   },
   computed: {
     menuStyle() {
-      var width = ""
-      if (this.show) {
-        width = 210
-      } else {
-        width = 70
-      }
+      const width = this.show ? 70 : 210
       return {
         width: width + "px"
       }
     },
     layoutStyle() {
-      var width = ""
-      if (this.show) {
-        width = 210
-      } else {
-        width = 70
-      }
+      const width = this.show ? 70 : 210
       return {
         marginLeft: width + "px"
       }
@@ -72,7 +62,7 @@ export default {
       immediate: true
     }
   },
-  mounted() {
+  created() {
 
   },
 
@@ -92,6 +82,7 @@ export default {
   left: 0;
   overflow: hidden;
   // width: 210px;
+  transition: 0.3s;
   height: 100vh;
   background-color: $main_bg_color;
   .imgs {

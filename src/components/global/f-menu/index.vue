@@ -3,14 +3,14 @@
  * @Autor: fulei
  * @Date: 2020-05-07 23:22:51
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-19 14:09:22
+ * @LastEditTime: 2022-06-19 14:21:15
  -->
 <template>
   <div>
     <el-menu default-active='0' :unique-opened="true" router class="el-menu-vertical-demo">
       <el-menu-item v-for="item in data" :index="item.id" :key="item.id" :route="{path:item.to}">
         <i :class="item.icon"></i>
-        <span slot="title" v-if="showIcon">{{item.name}}</span>
+        <span slot="title" v-if="!showIcon">{{item.name}}</span>
       </el-menu-item>
     </el-menu>
   </div>
