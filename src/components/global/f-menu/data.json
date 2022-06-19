@@ -2,12 +2,36 @@
   "menuList":[
     {
      "id": "0",
-     "icon": "el-icon-user-solid",
+     "icon": "el-icon-s-home",
      "name": "首页",
      "to": "/index"
     },
     {
-     "id": "1",
+      "id": "1",
+      "icon": "el-icon-menu",
+      "name": "权限管理",
+      "to": "/permission-manage"
+     },
+    {
+      "id": "2",
+      "icon": "el-icon-s-order",
+      "name": "文章管理",
+      "to": "/artilce"
+     },
+     {
+      "id": "3",
+      "icon": "el-icon-s-finance",
+      "name": "项目管理",
+      "to": "/project"
+     },
+     {
+      "id": "4",
+      "icon": "el-icon-s-comment",
+      "name": "信箱管理",
+      "to": "/message"
+     },
+    {
+     "id": "5",
      "icon": "el-icon-user-solid",
      "name": "用户中心",
      "to": "/user-info"
