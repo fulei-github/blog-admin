@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-19 13:45:07
+ * @LastEditTime: 2022-06-24 14:16:46
 -->
 <template>
 
@@ -14,9 +14,6 @@
     </div>
     <div class="wrapper">
       <el-avatar :size="50" :src="src"></el-avatar>
-      <!-- <div>
-          <img src="../assets/logo.png" alt="">
-        </div> -->
       <div class="dropdown_box">
         <el-dropdown>
           <span class="el-dropdown-link">
@@ -89,7 +86,7 @@ export default {
   background-image: url("../assets/imgs/index/bg@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  z-index: 9999;
+  z-index: 10;
   h4 {
     margin: 0;
     margin-left: 40px;

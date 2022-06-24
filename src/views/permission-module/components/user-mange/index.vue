@@ -1,10 +1,10 @@
 <!--
- * @Description: 角色管理
+ * @Description: 用户管理
  * @Date: 2022-06-24 13:16:42
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-24 14:30:08
+ * @LastEditTime: 2022-06-24 14:29:07
 -->
 <template>
   <div>
@@ -20,13 +20,13 @@
         <el-form ref="form" :model="form" label-width="70px" size="small">
           <el-row>
             <el-col :span="6">
-              <el-form-item label="角色名称">
-                <el-input v-model="form.roleName"></el-input>
+              <el-form-item label="用户名称">
+                <el-input v-model="form.userName"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="6">
-              <el-form-item label="权限字符">
-                <el-input v-model="form.string"></el-input>
+              <el-form-item label="手机号码">
+                <el-input v-model="form.phone"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="6">
@@ -46,7 +46,7 @@
       </div>
     </transition>
 
-    <f-title content="用户列表" border>
+    <f-title content="用户列表">
       <template #right-area>
         <el-tooltip class="item" effect="dark" :content="showFormArea ? '隐藏搜索' : '显示搜索'" placement="top-start">
           <el-button icon="el-icon-search" circle @click="showFormArea = !showFormArea"></el-button>
@@ -54,24 +54,21 @@
         <el-tooltip class="item" effect="dark" content="刷新" placement="top-start">
           <el-button icon="el-icon-refresh" circle @click="queryInfo"></el-button>
         </el-tooltip>
-        <el-button type="primary" size="small" icon="el-icon-plus">添加角色</el-button>
       </template>
     </f-title>
-
     <el-table :data="tableData" border v-loading="loading">
       <el-table-column type="selection" align="center" width="55">
       </el-table-column>
-      <el-table-column type="index" label="角色编号" align="center" width="200">
+      <el-table-column type="index" label="用户编号" align="center" width="200">
       </el-table-column>
-      <el-table-column label="角色名称" prop="roleName" align="center"></el-table-column>
-      <el-table-column prop="string" label="权限字符" align="center"></el-table-column>
+      <el-table-column label="用户名称" prop="userName" align="center"></el-table-column>
+      <el-table-column prop="phone" label="手机号码" align="center"></el-table-column>
       <el-table-column prop="state" label="状态" align="center">
         <template slot-scope="scope">
           <el-switch v-model="scope.row.state" active-color="#13ce66" inactive-color="#ff4949" disabled>
           </el-switch>
         </template>
       </el-table-column>
-      <el-table-column prop="roleDesc" label="权限描述" align="center"></el-table-column>
       <el-table-column prop="createDate" label="创建时间" align="center"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
@@ -112,7 +109,6 @@ export default {
     },
     //分页组件
     pagination(val) {
-      this.getList()
       console.log(val)
     },
     //模拟数据
@@ -121,25 +117,22 @@ export default {
       const timers = setTimeout(() => {
         this.tableData = [
           {
-            roleName: "admin",
-            string: "admin",
+            userName: "admin",
+            phone: "13001973483",
             state: "1",
-            createDate: "20220606",
-            roleDesc: "admin最高管理员，用于所有权限"
+            createDate: "20220606"
           },
           {
-            roleName: "user-1",
-            string: "mange",
+            userName: "user-1",
+            phone: "13001973483",
             state: "1",
-            createDate: "20220620",
-            roleDesc: "网站管理员拥有除admin外的所有权限"
+            createDate: "20220620"
           },
           {
-            roleName: "user-2",
-            string: "user",
+            userName: "user-1",
+            phone: "13001973483",
             state: "0",
-            createDate: "20220620",
-            roleDesc: "普通用户，仅可发布文章以及增删改查自己的文章"
+            createDate: "20220620"
           }
         ]
         this.loading = false
@@ -155,7 +148,7 @@ export default {
     },
     //删除按钮
     handleDelte(row) {
-      this.$confirm(`您确定删除 ${row.roleName}? 角色吗？`, "提示", {
+      this.$confirm(`您确定删除 ${row.userName}? 用户吗？`, "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"

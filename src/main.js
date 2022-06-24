@@ -4,7 +4,7 @@
  * @Autor: fulei
  * @Date: 2022-05-12 11:26:58
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-19 15:07:26
+ * @LastEditTime: 2022-06-24 13:50:13
  */
 import Vue from "vue"
 import App from "./App.vue"
@@ -20,6 +20,7 @@ import { beforeEachHandler } from "@/router/befor-each"
 import SessionUtil from "@/utils/session-storage"
 // 引入 echarts
 import * as echarts from "echarts"
+import "animate.css"
 Vue.prototype.$echarts = echarts
 Vue.prototype.$sessionUtil = SessionUtil
 Vue.mixin(Mixin)

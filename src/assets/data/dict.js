@@ -1,3 +1,11 @@
+/*
+ * @Description: 字典
+ * @Date: 2022-06-12 21:14:33
+ * @Version: 0.1
+ * @Autor: fulei
+ * @LastEditors: fulei
+ * @LastEditTime: 2022-06-24 13:39:06
+ */
 module.exports = {
   // 默认
   default: [
@@ -30,5 +38,10 @@ module.exports = {
     { value: "07", label: "志愿活动" },
     { value: "08", label: "自管组织" },
     { value: "09", label: "其他" }
+  ],
+  //用户状态
+  state: [
+    { label: "正常", value: "1" },
+    { label: "停用", value: "0" }
   ]
 }

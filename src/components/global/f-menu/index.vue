@@ -3,12 +3,13 @@
  * @Autor: fulei
  * @Date: 2020-05-07 23:22:51
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-19 14:31:09
+ * @LastEditTime: 2022-06-24 14:27:10
  -->
 <template>
   <div>
-    <el-menu default-active='0' :unique-opened="true" router class="el-menu-vertical-demo">
-      <el-menu-item v-for="item in data" :index="item.id" :key="item.id" :route="{path:item.to}">
+    <el-menu :default-active='index' :unique-opened="true" router class="el-menu-vertical-demo">
+      <!-- <el-menu-item v-for="item in data" :index="item.id" :key="item.id" :route="{path:item.to}"> -->
+      <el-menu-item v-for="item in data" :index="item.index" :key="item.id" :route="item.index">
         <i :class="item.icon"></i>
         <span v-if="!showIcon" slot="title">{{item.name}}</span>
       </el-menu-item>
@@ -32,12 +33,22 @@ export default {
       default: false
     }
   },
+
   data() {
     return {
-      data: []
+      data: [],
+      index: ""
     }
   },
-
+  watch: {
+    $route: {
+      handler(to) {
+        this.index = to.fullPath
+      },
+      deep: true,
+      immediate: true
+    }
+  },
   mounted() {
     this.data = theDate.menuList
   },
