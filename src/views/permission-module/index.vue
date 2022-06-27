@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-24 14:04:10
+ * @LastEditTime: 2022-06-27 20:36:05
 -->
 <template>
   <div class="permission-module">
@@ -40,6 +40,7 @@ export default {
   methods: {
     handlerClick(i) { //tab切换
       this.active = i
+      ""
     }
   }
 }

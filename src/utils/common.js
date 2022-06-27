@@ -1,9 +1,9 @@
 /*
  * @Description: 设置浏览器title
- * @Autor: guoruliang
+ * @Autor: fulei
  * @Date: 2020-03-23 17:02:15
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-12 21:20:06
+ * @LastEditTime: 2022-06-27 20:09:06
  */
 export function setTitle(title) {
   document.title = title

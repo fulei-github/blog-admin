@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-19 13:42:15
+ * @LastEditTime: 2022-06-27 20:52:33
  */
 
 import Layout from "@/layout/index.vue"
@@ -22,6 +22,7 @@ export default [
         },
         component: () =>
           import(/* webpackChunkName: "publicModule" */ "@/views/user-module")
+        // import(/* webpackChunkName: "publicModule" */ "@/views/login-module/animate.vue")
       }
     ]
   }

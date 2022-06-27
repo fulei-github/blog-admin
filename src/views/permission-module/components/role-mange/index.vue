@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-24 14:30:08
+ * @LastEditTime: 2022-06-24 15:10:43
 -->
 <template>
   <div>
@@ -54,7 +54,7 @@
         <el-tooltip class="item" effect="dark" content="刷新" placement="top-start">
           <el-button icon="el-icon-refresh" circle @click="queryInfo"></el-button>
         </el-tooltip>
-        <el-button type="primary" size="small" icon="el-icon-plus">添加角色</el-button>
+        <el-button type="primary" size="small" icon="el-icon-plus" @click="addRole">添加角色</el-button>
       </template>
     </f-title>
 
@@ -75,24 +75,31 @@
       <el-table-column prop="createDate" label="创建时间" align="center"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit">编 辑</el-button>
+          <el-button size="mini" @click="handleEdit(scope.row)">编 辑</el-button>
           <el-button type="danger" size="mini" @click="handleDelte(scope.row)">删 除</el-button>
         </template>
       </el-table-column>
     </el-table>
     <f-pagination :total="100" @pagination="pagination" />
+    <edit-dialog :showDialog="showDialog" :type="type" :formData="sonForm" @close="showDialog = false" />
   </div>
 </template>
 
 <script>
+import EditDialog from "./edit.vue"
 export default {
-
+  components: {
+    EditDialog
+  },
   data() {
     return {
       tableData: [],
       form: {},
       loading: false,
-      showFormArea: true
+      showFormArea: true,
+      showDialog: false,
+      sonForm: {},
+      type: ""
     }
   },
 
@@ -147,11 +154,15 @@ export default {
       }, 500)
     },
     //编辑操作
-    handleEdit() {
-      this.$message({
-        type: "success",
-        message: "编辑操作!"
-      })
+    handleEdit(row) {
+      this.type = "edit"
+      this.showDialog = true
+      this.sonForm = row
+    },
+    //新增角色
+    addRole() {
+      this.type = "add"
+      this.showDialog = true
     },
     //删除按钮
     handleDelte(row) {

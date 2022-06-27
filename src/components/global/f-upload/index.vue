@@ -1,10 +1,10 @@
 <!--
- * @Description: 
+ * @Description: 上传组件
  * @Date: 2022-05-02 12:23:26
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-05-13 19:55:11
+ * @LastEditTime: 2022-06-27 20:07:45
 -->
 
 <template>

@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-24 14:29:07
+ * @LastEditTime: 2022-06-24 14:48:28
 -->
 <template>
   <div>
@@ -72,7 +72,6 @@
       <el-table-column prop="createDate" label="创建时间" align="center"></el-table-column>
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit">编 辑</el-button>
           <el-button type="danger" size="mini" @click="handleDelte(scope.row)">删 除</el-button>
         </template>
       </el-table-column>
@@ -139,13 +138,7 @@ export default {
         clearTimeout(timers)
       }, 500)
     },
-    //编辑操作
-    handleEdit() {
-      this.$message({
-        type: "success",
-        message: "编辑操作!"
-      })
-    },
+
     //删除按钮
     handleDelte(row) {
       this.$confirm(`您确定删除 ${row.userName}? 用户吗？`, "提示", {

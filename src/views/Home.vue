@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-19 16:06:43
+ * @LastEditTime: 2022-06-27 20:18:30
 -->
 <template>
   <div class="home_box">
@@ -24,6 +24,9 @@
             <div class="t2">
               <span>{{item.number}}</span>篇
             </div>
+          </div>
+          <div>
+            <f-clock />
           </div>
         </div>
       </div>
@@ -121,9 +124,10 @@ export default {
     }
   }
   .index-title {
-    height: 72px;
+    height: 116px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     .left-block {
       flex: 1;
       display: flex;
@@ -151,6 +155,7 @@ export default {
     .right-block {
       flex: 1;
       display: flex;
+      align-items: center;
       font-size: 14px;
       div {
         flex: 1;

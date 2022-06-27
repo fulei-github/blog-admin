@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Date: 2022-06-12 21:14:33
+ * @Version: 0.1
+ * @Autor: fulei
+ * @LastEditors: fulei
+ * @LastEditTime: 2022-06-27 20:19:49
+-->
 <template>
   <div>
     <clock :time="time"></clock>
@@ -50,4 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.clock {
+  line-height: 22px;
+}
 </style>

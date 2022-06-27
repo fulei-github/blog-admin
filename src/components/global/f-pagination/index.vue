@@ -1,9 +1,9 @@
 <!--
  * @Description: 分页
- * @Autor: guoruliang
+ * @Autor: fulei
  * @Date: 2020-05-07 23:22:51
  * @LastEditors: fulei
- * @LastEditTime: 2022-05-12 18:19:21
+ * @LastEditTime: 2022-06-27 20:06:26
  -->
 <template>
   <div :class="{'hidden':hidden}" class="pagination-container">

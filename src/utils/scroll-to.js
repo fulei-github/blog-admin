@@ -1,7 +1,10 @@
 /*
  * @Description: 滚动效果函数
+ * @Date: 2022-06-12 21:14:33
  * @Version: 0.1
- * @Autor: Chenyt
+ * @Autor: fulei
+ * @LastEditors: fulei
+ * @LastEditTime: 2022-06-27 20:09:18
  */
 
 Math.easeInOutQuad = function(t, b, c, d) {

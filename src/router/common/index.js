@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-19 13:41:34
+ * @LastEditTime: 2022-06-27 20:54:18
  */
 
 import Layout from "@/layout/index.vue"
@@ -33,6 +33,7 @@ export default [
     component: () =>
       import(/* webpackChunkName: "publicModule" */ "@/views/login-module")
   },
+
   {
     path: "*",
     name: "not-found",

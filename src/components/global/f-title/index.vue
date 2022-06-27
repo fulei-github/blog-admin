@@ -1,3 +1,11 @@
+<!--
+ * @Description: 标题组件
+ * @Date: 2022-06-12 21:14:33
+ * @Version: 0.1
+ * @Autor: fulei
+ * @LastEditors: fulei
+ * @LastEditTime: 2022-06-27 20:06:35
+-->
 <template>
   <div class="y-title" :style="style">
     <div :class="border ? 'content' : 'border-none content'" :style="contStyle">
@@ -8,6 +16,7 @@
       <router-link class="more" v-show="more" :to="pathUrl" v-if="moreType == 1">{{ more }}</router-link>
       <span class="more-flag" v-if="moreType == 2">
         <span class="required">*</span>为必填项</span>
+
       <div class="right-area">
         <slot name="right-area"></slot>
       </div>
