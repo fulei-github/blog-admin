@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-27 20:55:36
+ * @LastEditTime: 2022-06-27 21:27:44
 -->
 <template>
   <div class="login-box" ref="vantaRef">
@@ -59,8 +59,8 @@
 </template>
 
 <script>
-import * as THREE from "three"
-import waves from "vanta/src/vanta.waves"
+// import * as THREE from "three"
+// import waves from "vanta/src/vanta.waves"
 export default {
   data() {
     const validatePassword2 = (rule, value, callback) => {
@@ -91,17 +91,17 @@ export default {
       isLogin: true
     }
   },
-  mounted() {
-    this.vantaEffect = waves({
-      el: this.$refs.vantaRef,
-      THREE: THREE
-    })
-  },
-  beforeDestroy() {
-    if (this.vantaEffect) {
-      this.vantaEffect.destroy()
-    }
-  },
+  // mounted() {
+  //   this.vantaEffect = waves({
+  //     el: this.$refs.vantaRef,
+  //     THREE: THREE
+  //   })
+  // },
+  // beforeDestroy() {
+  //   if (this.vantaEffect) {
+  //     this.vantaEffect.destroy()
+  //   }
+  // },
   methods: {
     async handleSubmit(key) {
       await this.$refs.form.validate()
