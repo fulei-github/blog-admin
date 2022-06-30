@@ -4,7 +4,7 @@
  * @Autor: fulei
  * @Date: 2022-05-12 11:26:58
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-15 21:17:26
+ * @LastEditTime: 2022-06-30 21:14:06
  */
 const path = require("path")
 
@@ -25,7 +25,7 @@ module.exports = {
     disableHostCheck: true,
     proxy: {
       "/api": {
-        target: "http://192.168.1.86:9102",
+        target: "http://127.0.0.1:7001/api/",
         ws: true,
         changOrigin: true,
         pathRewrite: {
@@ -59,9 +59,7 @@ module.exports = {
       .set("@components", resolve("src/components"))
       .set("@pic", resolve("src/assets/imgs"))
     // svg配置
-    config.module
-      .rule("svg")
-      .uses.clear()
+    config.module.rule("svg").uses.clear()
     config.module
       .rule("svg1")
       .test(/.svg$/)
@@ -71,8 +69,7 @@ module.exports = {
         symbolId: "icon-[name]"
       })
       .end()
-      .include
-      .add(path.join(__dirname, "src/icons"))
+      .include.add(path.join(__dirname, "src/icons"))
       .end()
   }
 }

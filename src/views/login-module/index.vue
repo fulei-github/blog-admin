@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-27 21:27:44
+ * @LastEditTime: 2022-06-30 21:59:46
 -->
 <template>
   <div class="login-box" ref="vantaRef">
@@ -59,6 +59,9 @@
 </template>
 
 <script>
+import { createUserApi } from "@/api/user/index"
+import { mapActions } from "vuex"
+
 // import * as THREE from "three"
 // import waves from "vanta/src/vanta.waves"
 export default {
@@ -88,7 +91,17 @@ export default {
         password2: [{ required: true, validator: validatePassword2, trigger: "blur" }]
       },
       title: "欢迎登录",
-      isLogin: true
+      isLogin: true,
+      redirect: undefined
+    }
+  },
+  watch: {
+    $route: {
+      handler: function(route) {
+        // 存储上次访问页面的访问地址 路由参数的监控
+        this.redirect = route.query && route.query.redirect
+      },
+      immediate: true
     }
   },
   // mounted() {
@@ -103,6 +116,7 @@ export default {
   //   }
   // },
   methods: {
+    ...mapActions("user", ["getTokenAction"]),
     async handleSubmit(key) {
       await this.$refs.form.validate()
       try {
@@ -119,17 +133,17 @@ export default {
       }
     },
     //登录的api
-    handleLogin() {
-      const params = {
-        username: this.form.username,
-        password: this.form.password
+    async handleLogin() {
+      try {
+        const params = {
+          username: this.form.username,
+          password: this.form.password
+        }
+        await this.getTokenAction(params)
+        this.$router.replace(this.redirect || "/")
+      } catch (error) {
+        console.dir("登录出错", error)
       }
-      //模拟登录
-      this.$sessionUtil.setItem("token", "70e49704-343b-4c3c-852b-83e27f18aae4")
-      this.$sessionUtil.setItem("user", params)
-      setTimeout(() => {
-        this.$router.push("/")
-      }, 500)
     },
     //注册的api
     handleReg() {
@@ -137,8 +151,12 @@ export default {
         username: this.form.username1,
         password: this.form.password1
       }
-      console.log("注册的入参", params)
-      this.isLogin = !this.isLogin
+      createUserApi(params)
+        .then(res => {
+          console.log("注册的接口", res)
+        })
+
+      // this.isLogin = !this.isLogin
     },
     handleClick() {
       this.form = {}

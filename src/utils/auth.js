@@ -4,12 +4,17 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-16 11:39:36
+ * @LastEditTime: 2022-06-30 21:57:54
  */
 
 // 获取token
 export function getToken() {
   return sessionStorage.getItem("token")
+}
+
+// 存储token
+export function setTokenInLocal(token) {
+  return sessionStorage.setItem("token", token)
 }
 
 // 获取用户信息
