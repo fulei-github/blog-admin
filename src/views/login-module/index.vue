@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-30 21:59:46
+ * @LastEditTime: 2022-06-30 22:08:51
 -->
 <template>
   <div class="login-box" ref="vantaRef">
@@ -49,7 +49,7 @@
           </template>
         </el-form>
         <el-button v-if="isLogin" type="primary" @click.native.prevent="handleSubmit('0')">登录</el-button>
-        <el-button v-else type="primary" @click="handleSubmit('1')">注册</el-button>
+        <el-button v-else v-loading="loading" type="primary" @click="handleSubmit('1')">注册</el-button>
         <div class="t-a-c" style="width:100%">
           <el-link v-if="isLogin" type="info" @click="handleClick">没有账号？点此去注册</el-link>
         </div>
@@ -62,8 +62,6 @@
 import { createUserApi } from "@/api/user/index"
 import { mapActions } from "vuex"
 
-// import * as THREE from "three"
-// import waves from "vanta/src/vanta.waves"
 export default {
   data() {
     const validatePassword2 = (rule, value, callback) => {
@@ -77,22 +75,23 @@ export default {
     }
     return {
       form: {
-        username: "",
-        password: "",
-        username1: "",
-        password1: "",
-        password2: ""
+        username: "", //登录账号
+        password: "", //登录密码
+        username1: "", //注册账号
+        password1: "", //注册密码
+        password2: "" //注册确认密码
       },
       rules: {
-        username: [{ required: true, message: "请输入账号", trigger: "blur" }],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-        username1: [{ required: true, validator: this.validateUserNameFn, trigger: "blur" }],
-        password1: [{ required: true, validator: this.validatePassWordFn, trigger: "blur" }],
-        password2: [{ required: true, validator: validatePassword2, trigger: "blur" }]
+        username: [{ required: true, message: "请输入账号", trigger: "blur" }], //登录账号
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }], //登录密码
+        username1: [{ required: true, validator: this.validateUserNameFn, trigger: "blur" }], //注册账号
+        password1: [{ required: true, validator: this.validatePassWordFn, trigger: "blur" }], //注册密码
+        password2: [{ required: true, validator: validatePassword2, trigger: "blur" }] //注册确认密码
       },
-      title: "欢迎登录",
-      isLogin: true,
-      redirect: undefined
+      title: "欢迎登录", //标题
+      isLogin: true, //是否登录？
+      loading: false, //注册和登录时给按钮loading 防止重复请求
+      redirect: undefined //记录重定向地址
     }
   },
   watch: {
@@ -104,20 +103,11 @@ export default {
       immediate: true
     }
   },
-  // mounted() {
-  //   this.vantaEffect = waves({
-  //     el: this.$refs.vantaRef,
-  //     THREE: THREE
-  //   })
-  // },
-  // beforeDestroy() {
-  //   if (this.vantaEffect) {
-  //     this.vantaEffect.destroy()
-  //   }
-  // },
   methods: {
     ...mapActions("user", ["getTokenAction"]),
+    //点击注册或者登录按钮
     async handleSubmit(key) {
+      this.loading = true
       await this.$refs.form.validate()
       try {
         switch (key) {
@@ -128,22 +118,19 @@ export default {
             this.handleReg()
             break
         }
+        this.loading = false
       } catch (error) {
-        console.dir(error)
+        console.dir("捕获登录或者注册的异常", error)
       }
     },
     //登录的api
     async handleLogin() {
-      try {
-        const params = {
-          username: this.form.username,
-          password: this.form.password
-        }
-        await this.getTokenAction(params)
-        this.$router.replace(this.redirect || "/")
-      } catch (error) {
-        console.dir("登录出错", error)
+      const params = {
+        username: this.form.username,
+        password: this.form.password
       }
+      await this.getTokenAction(params)
+      this.$router.replace(this.redirect || "/")
     },
     //注册的api
     handleReg() {
@@ -153,17 +140,15 @@ export default {
       }
       createUserApi(params)
         .then(res => {
-          console.log("注册的接口", res)
+          if (res.code === 200) {
+            this.isLogin = !this.isLogin
+          }
         })
-
-      // this.isLogin = !this.isLogin
     },
+    // 切换登录注册
     handleClick() {
       this.form = {}
       this.isLogin = !this.isLogin
-    },
-    onSubmit() {
-      console.log(this.form.name)
     }
   }
 }
